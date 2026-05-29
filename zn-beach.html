@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZN Beach Arena — Londrina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#D4A853;
+  --gold-light:#F0C878;
+  --gold-dark:#A07830;
+  --bg:#0A0A0C;
+  --bg2:#111115;
+  --bg3:#18181E;
+  --bg4:#1F1F28;
+  --surface:#242430;
+  --surface2:#2C2C3A;
+  --text:#F0EDE8;
+  --text2:#A8A5A0;
+  --text3:#6A6870;
+  --green:#2ECC71;
+  --red:#E74C3C;
+  --orange:#F39C12;
+  --blue:#3498DB;
+  --neon-gold:0 0 20px rgba(212,168,83,0.4);
+  --neon-gold-strong:0 0 40px rgba(212,168,83,0.6);
+  --r:12px;
+  --r2:20px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,12,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,168,83,0.15);transition:all .3s}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-icon{width:40px;height:40px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--bg);font-weight:400;letter-spacing:1px}
+.nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--text)}
+.nav-logo-text span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.5px;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gold);color:var(--bg);padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;letter-spacing:.5px;transition:all .3s;box-shadow:var(--neon-gold)}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:var(--neon-gold-strong)}
+.nav-badge{background:var(--green);color:#fff;font-size:10px;padding:2px 7px;border-radius:20px;margin-left:6px;font-weight:600;vertical-align:middle}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:72px}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 80% 60% at 70% 50%, rgba(212,168,83,0.08) 0%, transparent 60%),
+  radial-gradient(ellipse 50% 80% at 10% 80%, rgba(212,168,83,0.05) 0%, transparent 50%),
+  linear-gradient(180deg, #0A0A0C 0%, #0D0D10 50%, #0A0A0C 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,168,83,0.04) 1px, transparent 1px),linear-gradient(90deg, rgba(212,168,83,0.04) 1px, transparent 1px);background-size:60px 60px;animation:gridScroll 20s linear infinite}
+@keyframes gridScroll{0%{transform:translateY(0)}100%{transform:translateY(60px)}}
+.hero-orb{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle, rgba(212,168,83,0.12) 0%, transparent 70%);top:50%;right:5%;transform:translateY(-50%);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:translateY(-50%) scale(1)}50%{transform:translateY(-50%) scale(1.05)}}
+.hero-content{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,83,0.12);border:1px solid rgba(212,168,83,0.3);padding:8px 16px;border-radius:30px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,10vw,9rem);line-height:.9;letter-spacing:2px;margin-bottom:1.5rem}
+.hero-title .line1{display:block;color:var(--text)}
+.hero-title .line2{display:block;color:var(--gold);text-shadow:var(--neon-gold-strong)}
+.hero-subtitle{font-size:1.2rem;color:var(--text2);margin-bottom:2.5rem;max-width:500px;font-weight:300;line-height:1.7}
+.hero-subtitle strong{color:var(--text);font-weight:500}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{background:var(--gold);color:var(--bg);padding:16px 32px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;letter-spacing:.5px;transition:all .3s;box-shadow:var(--neon-gold);display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:var(--neon-gold-strong)}
+.btn-secondary{background:transparent;color:var(--text);padding:16px 32px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;letter-spacing:.5px;transition:all .3s;border:1px solid rgba(255,255,255,0.2);display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.btn-secondary:hover{background:rgba(255,255,255,0.05);border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08)}
+.hero-stat{text-align:left}
+.hero-stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);line-height:1;display:block}
+.hero-stat-label{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+.hero-visual{position:relative}
+.court-preview{position:relative;background:var(--surface);border-radius:24px;overflow:hidden;border:1px solid rgba(212,168,83,0.2);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.court-preview::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg, rgba(212,168,83,0.06) 0%, transparent 50%)}
+.court-svg{width:100%;height:100%;padding:2rem}
+.court-label-box{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(10,10,12,0.9);border:1px solid rgba(212,168,83,0.3);padding:12px 18px;border-radius:10px;backdrop-filter:blur(10px)}
+.court-label-box .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px;animation:blink 2s infinite}
+.court-label-name{font-weight:600;font-size:15px}
+.court-label-sub{font-size:12px;color:var(--text3);margin-top:2px}
+.floating-card{position:absolute;background:rgba(26,26,36,0.95);border:1px solid rgba(212,168,83,0.2);border-radius:12px;padding:12px 16px;backdrop-filter:blur(10px);animation:float 3s ease-in-out infinite}
+.floating-card:nth-child(2){top:15%;right:-20px;animation-delay:.5s}
+.floating-card:nth-child(3){top:50%;right:-30px;animation-delay:1s}
+.floating-card:nth-child(4){bottom:20%;left:-20px;animation-delay:1.5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fc-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.fc-value{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--text)}
+.fc-value.gold{color:var(--gold)}
+.fc-value.green{color:var(--green)}
+
+/* STATS CARDS */
+.stats-section{padding:3rem 2rem;max-width:1400px;margin:0 auto}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.stat-card{background:var(--bg3);border:1px solid rgba(212,168,83,0.12);border-radius:var(--r2);padding:2rem;position:relative;overflow:hidden;transition:all .3s;cursor:pointer}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg, transparent, var(--gold), transparent);opacity:0;transition:opacity .3s}
+.stat-card:hover{transform:translateY(-4px);border-color:rgba(212,168,83,0.3);box-shadow:var(--neon-gold)}
+.stat-card:hover::before{opacity:1}
+.stat-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:22px}
+.stat-icon.gold{background:rgba(212,168,83,0.15);color:var(--gold)}
+.stat-icon.green{background:rgba(46,204,113,0.15);color:var(--green)}
+.stat-icon.blue{background:rgba(52,152,219,0.15);color:var(--blue)}
+.stat-icon.orange{background:rgba(243,156,18,0.15);color:var(--orange)}
+.stat-number{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;margin-bottom:.5rem}
+.stat-number.gold{color:var(--gold)}
+.stat-number.green{color:var(--green)}
+.stat-number.blue{color:var(--blue)}
+.stat-number.orange{color:var(--orange)}
+.stat-label{font-size:14px;color:var(--text2);font-weight:500;margin-bottom:.5rem}
+.stat-sub{font-size:12px;color:var(--text3)}
+
+/* SECTION STYLES */
+section{padding:6rem 2rem}
+.section-inner{max-width:1400px;margin:0 auto}
+.section-tag{display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1rem;padding:6px 14px;border:1px solid rgba(212,168,83,0.3);border-radius:20px;background:rgba(212,168,83,0.08)}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.05;margin-bottom:1rem;letter-spacing:1px}
+.section-title span{color:var(--gold)}
+.section-subtitle{font-size:1.1rem;color:var(--text2);max-width:600px;line-height:1.7;font-weight:300}
+.section-header{margin-bottom:3.5rem}
+.section-header.center{text-align:center}
+.section-header.center .section-subtitle{margin:0 auto}
+
+/* TABS NAV */
+.tab-nav{display:flex;gap:0;background:var(--bg3);border:1px solid rgba(212,168,83,0.12);border-radius:14px;padding:6px;margin-bottom:2.5rem;overflow-x:auto}
+.tab-btn{padding:12px 24px;border-radius:10px;background:none;border:none;color:var(--text3);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;letter-spacing:.3px;display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif}
+.tab-btn.active{background:var(--gold);color:var(--bg)}
+.tab-btn:not(.active):hover{background:var(--surface);color:var(--text2)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* COURTS */
+.courts-toolbar{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;align-items:center}
+.filter-select{background:var(--surface);border:1px solid rgba(255,255,255,0.1);color:var(--text2);padding:10px 16px;border-radius:8px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:border-color .2s}
+.filter-select:hover{border-color:var(--gold)}
+.filter-select:focus{outline:none;border-color:var(--gold)}
+.courts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.court-card{background:var(--bg3);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r2);overflow:hidden;transition:all .3s;position:relative}
+.court-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.4),var(--neon-gold)}
+.court-card-header{padding:1.5rem;background:linear-gradient(135deg, var(--surface) 0%, var(--bg4) 100%);position:relative;overflow:hidden}
+.court-card-header::after{content:'';position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:rgba(212,168,83,0.06)}
+.court-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(212,168,83,0.2);position:absolute;top:10px;right:20px;letter-spacing:2px}
+.court-sport{display:inline-flex;align-items:center;gap:6px;background:rgba(212,168,83,0.15);color:var(--gold);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem}
+.court-name{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
+.court-status-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.status-disponivel{background:rgba(46,204,113,0.15);color:var(--green)}
+.status-reservada{background:rgba(231,76,60,0.15);color:var(--red)}
+.status-andamento{background:rgba(52,152,219,0.15);color:var(--blue)}
+.status-manutencao{background:rgba(243,156,18,0.15);color:var(--orange)}
+.court-card-body{padding:1.25rem 1.5rem}
+.court-info-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.court-info-row:last-child{border-bottom:none}
+.court-info-label{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.court-info-value{font-size:13px;font-weight:500;color:var(--text2)}
+.court-card-footer{padding:1.25rem 1.5rem;border-top:1px solid rgba(255,255,255,0.06)}
+.btn-sm{padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;letter-spacing:.3px;font-family:'DM Sans',sans-serif}
+.btn-sm.gold{background:var(--gold);color:var(--bg)}
+.btn-sm.gold:hover{background:var(--gold-light)}
+.btn-sm.outline{background:transparent;color:var(--text2);border:1px solid rgba(255,255,255,0.1)}
+.btn-sm.outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* BOOKING FLOW */
+.booking-container{display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:start}
+.booking-form{background:var(--bg3);border:1px solid rgba(212,168,83,0.12);border-radius:var(--r2);padding:2.5rem}
+.form-title{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:.5rem}
+.form-sub{font-size:14px;color:var(--text3);margin-bottom:2rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+label{font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text3)}
+input,select,textarea{background:var(--surface);border:1px solid rgba(255,255,255,0.08);color:var(--text);padding:12px 16px;border-radius:8px;font-size:14px;transition:border-color .2s;font-family:'DM Sans',sans-serif;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+select option{background:var(--surface)}
+.time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:.5rem}
+.time-slot{padding:10px;text-align:center;border-radius:8px;border:1px solid rgba(255,255,255,0.08);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;background:var(--surface)}
+.time-slot:hover{border-color:var(--gold);color:var(--gold)}
+.time-slot.selected{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.time-slot.occupied{background:rgba(231,76,60,0.1);border-color:rgba(231,76,60,0.3);color:var(--red);cursor:not-allowed}
+.booking-summary{background:var(--bg3);border:1px solid rgba(212,168,83,0.2);border-radius:var(--r2);padding:2rem;position:sticky;top:90px}
+.summary-header{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;color:var(--gold)}
+.summary-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:14px}
+.summary-row:last-of-type{border-bottom:none}
+.summary-label{color:var(--text3)}
+.summary-value{font-weight:500;color:var(--text)}
+.summary-total{background:var(--surface);border-radius:10px;padding:1.25rem;margin:1.5rem 0;display:flex;justify-content:space-between;align-items:center}
+.summary-total-label{font-size:13px;color:var(--text3)}
+.summary-total-value{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold)}
+.whatsapp-btn{background:#25D366;color:#fff;padding:14px;border-radius:10px;width:100%;font-weight:700;font-size:14px;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .3s;font-family:'DM Sans',sans-serif;margin-top:1rem}
+.whatsapp-btn:hover{background:#1DA851;transform:translateY(-1px)}
+
+/* TOURNAMENTS */
+.tournaments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.tournament-card{background:var(--bg3);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r2);overflow:hidden;transition:all .3s}
+.tournament-card:hover{transform:translateY(-4px);border-color:rgba(212,168,83,0.3);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.tournament-banner{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.t-banner-1{background:linear-gradient(135deg,#1a0a00,#3d1a00);border-bottom:2px solid var(--gold)}
+.t-banner-2{background:linear-gradient(135deg,#001a1a,#004040);border-bottom:2px solid var(--blue)}
+.t-banner-3{background:linear-gradient(135deg,#0d1a00,#1a3300);border-bottom:2px solid var(--green)}
+.t-banner-icon{font-size:60px;opacity:.4}
+.t-banner-label{position:absolute;top:12px;right:12px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px}
+.t-status-open{background:rgba(46,204,113,0.2);color:var(--green);border:1px solid rgba(46,204,113,0.4)}
+.t-status-soon{background:rgba(52,152,219,0.2);color:var(--blue);border:1px solid rgba(52,152,219,0.4)}
+.t-status-ended{background:rgba(106,104,112,0.2);color:var(--text3);border:1px solid rgba(106,104,112,0.3)}
+.tournament-body{padding:1.5rem}
+.tournament-sport{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.tournament-name{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:1rem}
+.tournament-meta{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.25rem}
+.t-meta-item{background:var(--surface);border-radius:8px;padding:.75rem 1rem}
+.t-meta-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.t-meta-value{font-weight:600;font-size:14px;color:var(--text)}
+.t-meta-value.gold{color:var(--gold)}
+.bracket-mini{background:var(--surface);border-radius:10px;padding:1rem;margin-bottom:1.25rem}
+.bracket-label{font-size:11px;color:var(--text3);margin-bottom.75rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.bracket-teams{display:flex;flex-direction:column;gap:4px}
+.bracket-pair{display:flex;gap:4px}
+.bracket-team{flex:1;background:var(--bg4);border-radius:4px;padding:5px 8px;font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bracket-team.winner{background:rgba(212,168,83,0.15);color:var(--gold);font-weight:600}
+
+/* TRAINING */
+.professors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem}
+.professor-card{background:var(--bg3);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r2);overflow:hidden;transition:all .3s;text-align:center}
+.professor-card:hover{transform:translateY(-4px);border-color:rgba(212,168,83,0.3)}
+.professor-avatar{width:100%;height:200px;background:linear-gradient(135deg, var(--surface) 0%, var(--bg4) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.professor-avatar::before{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(transparent,var(--bg3))}
+.avatar-circle{width:100px;height:100px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--bg);position:relative;z-index:1;box-shadow:0 0 30px rgba(212,168,83,0.4)}
+.professor-body{padding:1.5rem}
+.professor-name{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.25rem}
+.professor-role{font-size:12px;color:var(--gold);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem}
+.professor-desc{font-size:13px;color:var(--text3);line-height:1.6;margin-bottom:1rem}
+.professor-skills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.skill-pill{background:var(--surface);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;color:var(--text2)}
+.classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.class-card{background:var(--bg3);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r2);padding:1.5rem;transition:all .3s}
+.class-card:hover{transform:translateY(-3px);border-color:rgba(212,168,83,0.25)}
+.class-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.class-level{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.level-iniciante{background:rgba(46,204,113,0.15);color:var(--green)}
+.level-intermediario{background:rgba(52,152,219,0.15);color:var(--blue)}
+.level-avancado{background:rgba(231,76,60,0.15);color:var(--red)}
+.class-sport{font-size:20px}
+.class-name{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.class-professor{font-size:13px;color:var(--gold);margin-bottom:.75rem}
+.class-meta{display:flex;gap:.75rem;flex-wrap:wrap}
+.class-meta-item{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text3)}
+.vagas-bar{height:4px;background:var(--surface);border-radius:2px;margin-top:.5rem;overflow:hidden}
+.vagas-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .3s}
+.vagas-fill.low{background:var(--red)}
+
+/* DASHBOARD */
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:2rem}
+.dash-card{background:var(--bg3);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r2);padding:1.5rem}
+.dash-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:1rem}
+.dash-icon.gold{background:rgba(212,168,83,0.15);color:var(--gold)}
+.dash-icon.green{background:rgba(46,204,113,0.15);color:var(--green)}
+.dash-icon.blue{background:rgba(52,152,219,0.15);color:var(--blue)}
+.dash-icon.red{background:rgba(231,76,60,0.15);color:var(--red)}
+.dash-value{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;line-height:1;margin-bottom:.25rem}
+.dash-value.gold{color:var(--gold)}
+.dash-value.green{color:var(--green)}
+.dash-value.blue{color:var(--blue)}
+.dash-value.red{color:var(--red)}
+.dash-label{font-size:13px;color:var(--text3);margin-bottom:.5rem}
+.dash-trend{font-size:12px;color:var(--green)}
+.dash-trend.down{color:var(--red)}
+.dash-2col{display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;margin-bottom:2rem}
+.dash-panel{background:var(--bg3);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r2);padding:1.5rem}
+.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.panel-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700}
+.panel-action{font-size:12px;color:var(--gold);cursor:pointer;font-weight:600}
+.chart-bars{display:flex;align-items:flex-end;gap:8px;height:140px;padding-top:1rem}
+.chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.chart-bar{width:100%;border-radius:4px 4px 0 0;background:var(--surface);transition:height .3s}
+.chart-bar.active{background:linear-gradient(180deg,var(--gold),var(--gold-dark))}
+.chart-bar-label{font-size:10px;color:var(--text3)}
+.recent-table{width:100%;border-collapse:collapse}
+.recent-table th{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;font-weight:600}
+.recent-table td{padding:12px;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;color:var(--text2)}
+.recent-table tr:last-child td{border-bottom:none}
+.client-dot{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--surface2);text-align:center;line-height:28px;font-size:11px;font-weight:700;color:var(--gold);margin-right:6px}
+.quick-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+.qa-btn{background:var(--surface);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:1rem;cursor:pointer;text-align:left;transition:all .2s;width:100%}
+.qa-btn:hover{border-color:var(--gold);background:rgba(212,168,83,0.08)}
+.qa-btn-icon{font-size:20px;margin-bottom:.5rem;display:block}
+.qa-btn-label{font-size:13px;font-weight:600;color:var(--text)}
+.qa-btn-sub{font-size:11px;color:var(--text3);margin-top:2px}
+.rankings{background:var(--bg3);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r2);padding:1.5rem;grid-column:1/-1}
+.rank-list{display:flex;flex-direction:column;gap:.75rem;margin-top:1.25rem}
+.rank-item{display:flex;align-items:center;gap:1rem;padding:10px 1rem;background:var(--surface);border-radius:10px;border:1px solid rgba(255,255,255,0.05)}
+.rank-pos{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;width:36px;text-align:center}
+.rank-pos.p1{color:var(--gold)}
+.rank-pos.p2{color:#C0C0C0}
+.rank-pos.p3{color:#CD7F32}
+.rank-pos.other{color:var(--text3)}
+.rank-avatar{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--bg)}
+.rank-info{flex:1}
+.rank-name{font-weight:600;font-size:14px}
+.rank-sport{font-size:12px;color:var(--text3)}
+.rank-pts{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:var(--gold)}
+.rank-bar-wrap{width:80px}
+.rank-bar-bg{height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
+.rank-bar-fill{height:100%;background:var(--gold);border-radius:2px}
+
+/* DIFERENTIALS */
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.diff-card{background:var(--bg3);border:1px solid rgba(255,255,255,0.06);border-radius:var(--r2);padding:2rem;position:relative;overflow:hidden;transition:all .3s}
+.diff-card:hover{border-color:rgba(212,168,83,0.3);transform:translateY(-3px)}
+.diff-card::after{content:'';position:absolute;bottom:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(212,168,83,0.04);transition:transform .3s}
+.diff-card:hover::after{transform:scale(1.5)}
+.diff-icon{font-size:2.5rem;margin-bottom:1.25rem;display:block}
+.diff-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.75rem}
+.diff-text{font-size:14px;color:var(--text3);line-height:1.7}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(2,200px);gap:12px}
+.gallery-item{border-radius:var(--r);overflow:hidden;background:var(--surface);transition:all .3s;cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative}
+.gallery-item::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(212,168,83,0.08))}
+.gallery-item:hover{transform:scale(1.02);box-shadow:var(--neon-gold)}
+.gallery-item.large{grid-column:span 3;grid-row:span 2}
+.gallery-item.medium{grid-column:span 2}
+.gallery-item.small{grid-column:span 1}
+.gallery-inner{font-size:3rem;opacity:.4}
+.gallery-g1{background:linear-gradient(135deg,#1a1000,#2d1a00)}
+.gallery-g2{background:linear-gradient(135deg,#001a0d,#003d1a)}
+.gallery-g3{background:linear-gradient(135deg,#001020,#001a40)}
+.gallery-g4{background:linear-gradient(135deg,#1a0010,#3d0020)}
+.gallery-g5{background:linear-gradient(135deg,#0a100a,#1a2a1a)}
+.gallery-g6{background:linear-gradient(135deg,#100a00,#2a1a00)}
+.gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s;display:flex;align-items:center;justify-content:center}
+.gallery-item:hover .gallery-overlay{background:rgba(0,0,0,0.3)}
+.gallery-overlay-icon{opacity:0;color:var(--gold);font-size:2rem;transition:opacity .3s}
+.gallery-item:hover .gallery-overlay-icon{opacity:1}
+
+/* MAP */
+.map-section{background:var(--bg2)}
+.map-container{display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:center}
+.map-frame{background:var(--surface);border-radius:var(--r2);overflow:hidden;height:420px;border:1px solid rgba(212,168,83,0.15);position:relative;display:flex;align-items:center;justify-content:center}
+.map-placeholder{text-align:center;color:var(--text3)}
+.map-placeholder-icon{font-size:4rem;margin-bottom:1rem;display:block}
+.map-placeholder p{font-size:14px;margin-bottom:.5rem}
+.map-placeholder small{font-size:12px;color:var(--text3)}
+.map-info{display:flex;flex-direction:column;gap:1.25rem}
+.map-info-card{background:var(--bg3);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start}
+.map-info-icon{width:40px;height:40px;border-radius:8px;background:rgba(212,168,83,0.12);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.map-info-title{font-size:13px;font-weight:700;margin-bottom:4px;color:var(--text)}
+.map-info-text{font-size:13px;color:var(--text3);line-height:1.5}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid rgba(212,168,83,0.1);padding:4rem 2rem 2rem}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:1rem}
+.footer-brand-logo span{color:var(--gold)}
+.footer-brand-desc{font-size:14px;color:var(--text3);line-height:1.7;margin-bottom:1.5rem}
+.social-links{display:flex;gap:.75rem}
+.social-link{width:38px;height:38px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text3);text-decoration:none;transition:all .2s}
+.social-link:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,168,83,0.1)}
+.footer-col-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:1.25rem}
+.footer-links{display:flex;flex-direction:column;gap:.75rem}
+.footer-links a{font-size:14px;color:var(--text3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap}
+.footer-bottom p{font-size:13px;color:var(--text3)}
+.footer-bottom-links{display:flex;gap:1.5rem}
+.footer-bottom-links a{font-size:13px;color:var(--text3);text-decoration:none}
+.footer-bottom-links a:hover{color:var(--gold)}
+
+/* ADMIN BAR */
+.admin-bar{background:rgba(212,168,83,0.08);border-bottom:1px solid rgba(212,168,83,0.2);padding:.5rem 2rem;display:flex;align-items:center;gap:1rem}
+.admin-label{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.admin-badge-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:6px}
+
+/* ANIMATIONS */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeInUp .6s ease forwards}
+.fade-up-1{animation-delay:.1s;opacity:0}
+.fade-up-2{animation-delay:.2s;opacity:0}
+.fade-up-3{animation-delay:.3s;opacity:0}
+.fade-up-4{animation-delay:.4s;opacity:0}
+
+/* RESPONSIVE */
+@media(max-width:1200px){
+  .courts-grid,.tournaments-grid,.professors-grid,.classes-grid{grid-template-columns:repeat(2,1fr)}
+  .dash-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .booking-container{grid-template-columns:1fr}
+  .map-container{grid-template-columns:1fr}
+  .dash-2col{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(3,1fr);grid-template-rows:auto}
+  .gallery-item.large{grid-column:span 2;grid-row:span 1}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .stats-grid,.courts-grid,.tournaments-grid,.professors-grid,.classes-grid,.dash-grid,.diff-grid{grid-template-columns:1fr}
+  .hero-title{font-size:4rem}
+  .hero-stats{flex-direction:column;gap:1rem}
+  .form-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+
+/* SEPARATOR */
+.sep{width:60px;height:3px;background:var(--gold);border-radius:2px;margin:1rem 0 2rem}
+.sep.center{margin:1rem auto 2rem}
+
+/* NOTIFICATION */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--green);color:#fff;padding:1rem 1.5rem;border-radius:12px;font-weight:600;font-size:14px;transform:translateX(200%);transition:transform .3s;z-index:9999;display:flex;align-items:center;gap:.75rem}
+.toast.show{transform:translateX(0)}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Reserva confirmada com sucesso!</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">ZN</div>
+    <div class="nav-logo-text">ZN <span>BEACH</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#quadras" onclick="goTab('quadras')">Quadras</a>
+    <a href="#reservas" onclick="goTab('reservas')">Reservas</a>
+    <a href="#torneios" onclick="goTab('torneios')">Torneios</a>
+    <a href="#treinos" onclick="goTab('treinos')">Treinos</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#localizacao">Localização</a>
+    <a href="#dashboard" onclick="goTab('dashboard')">Admin <span class="nav-badge">●</span></a>
+  </div>
+  <a href="#reservas" class="nav-cta" onclick="goTab('reservas')">Reservar Agora</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge fade-up fade-up-1">
+        <span class="hero-badge-dot"></span>
+        Arena Premium · Londrina Norte
+      </div>
+      <h1 class="hero-title fade-up fade-up-2">
+        <span class="line1">ZN</span>
+        <span class="line2">BEACH</span>
+      </h1>
+      <p class="hero-subtitle fade-up fade-up-3">
+        A melhor arena de beach sports da Zona Norte de Londrina.<br>
+        <strong>Quadras premium, torneios eletrizantes e treinos profissionais</strong> para todos os níveis.
+      </p>
+      <div class="hero-actions fade-up fade-up-4">
+        <a href="#reservas" class="btn-primary" onclick="goTab('reservas')">🏐 Reservar Quadra</a>
+        <a href="#torneios" class="btn-secondary" onclick="goTab('torneios')">🏆 Ver Torneios</a>
+      </div>
+      <div class="hero-stats fade-up fade-up-4">
+        <div class="hero-stat"><span class="hero-stat-num">8</span><span class="hero-stat-label">Quadras</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">3</span><span class="hero-stat-label">Torneios Ativos</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">24</span><span class="hero-stat-label">Horários/dia</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">6</span><span class="hero-stat-label">Professores</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="court-preview">
+        <svg class="court-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sand base -->
+          <rect x="20" y="160" width="360" height="110" rx="4" fill="#1a1408" stroke="#2a2010" stroke-width="1"/>
+          <!-- Sand texture lines -->
+          <line x1="20" y1="185" x2="380" y2="185" stroke="#231b0a" stroke-width="1"/>
+          <line x1="20" y1="210" x2="380" y2="210" stroke="#231b0a" stroke-width="1"/>
+          <line x1="20" y1="235" x2="380" y2="235" stroke="#231b0a" stroke-width="1"/>
+          <!-- Court boundary -->
+          <rect x="60" y="60" width="280" height="160" rx="2" fill="none" stroke="#D4A853" stroke-width="2" opacity=".6"/>
+          <!-- Center line -->
+          <line x1="200" y1="60" x2="200" y2="220" stroke="#D4A853" stroke-width="1.5" opacity=".4"/>
+          <!-- Net posts -->
+          <line x1="60" y1="140" x2="340" y2="140" stroke="#F0C878" stroke-width="2.5" opacity=".8"/>
+          <line x1="60" y1="60" x2="60" y2="220" stroke="#888" stroke-width="1.5" opacity=".5"/>
+          <line x1="340" y1="60" x2="340" y2="220" stroke="#888" stroke-width="1.5" opacity=".5"/>
+          <!-- Ball -->
+          <circle cx="150" cy="110" r="12" fill="none" stroke="#D4A853" stroke-width="1.5" opacity=".7"/>
+          <circle cx="150" cy="110" r="6" fill="#D4A853" opacity=".5"/>
+          <!-- Player shadows -->
+          <ellipse cx="120" cy="190" rx="18" ry="6" fill="#D4A853" opacity=".15"/>
+          <ellipse cx="270" cy="200" rx="18" ry="6" fill="#D4A853" opacity=".15"/>
+          <!-- Lighting glow -->
+          <ellipse cx="200" cy="140" rx="180" ry="40" fill="none" stroke="#D4A853" stroke-width=".5" opacity=".15"/>
+          <!-- Light posts -->
+          <line x1="30" y1="20" x2="30" y2="170" stroke="#555" stroke-width="3"/>
+          <circle cx="30" cy="20" r="8" fill="#D4A853" opacity=".8"/>
+          <ellipse cx="30" cy="20" rx="30" ry="15" fill="url(#lightglow)" opacity=".3"/>
+          <line x1="370" y1="20" x2="370" y2="170" stroke="#555" stroke-width="3"/>
+          <circle cx="370" cy="20" r="8" fill="#D4A853" opacity=".8"/>
+          <defs>
+            <radialGradient id="lightglow"><stop offset="0%" stop-color="#D4A853" stop-opacity="1"/><stop offset="100%" stop-color="#D4A853" stop-opacity="0"/></radialGradient>
+          </defs>
+        </svg>
+        <div class="court-label-box">
+          <span class="status-dot"></span>
+          <span class="court-label-name">Quadra Ouro 1</span>
+          <div class="court-label-sub">Beach Tennis · Disponível agora</div>
+        </div>
+      </div>
+      <div class="floating-card">
+        <div class="fc-label">Reservas hoje</div>
+        <div class="fc-value gold">42</div>
+      </div>
+      <div class="floating-card">
+        <div class="fc-label">Taxa ocupação</div>
+        <div class="fc-value green">87%</div>
+      </div>
+      <div class="floating-card">
+        <div class="fc-label">Próximo torneio</div>
+        <div class="fc-value" style="font-size:14px;font-family:'DM Sans'">14 Jun</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon gold">🏟️</div>
+      <div class="stat-number gold">8</div>
+      <div class="stat-label">Quadras Premium</div>
+      <div class="stat-sub">Beach Tennis, Vôlei, Futevôlei</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon green">🏆</div>
+      <div class="stat-number green">3</div>
+      <div class="stat-label">Torneios Ativos</div>
+      <div class="stat-sub">Inscrições abertas agora</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon blue">⏰</div>
+      <div class="stat-number blue">24</div>
+      <div class="stat-label">Horários Diários</div>
+      <div class="stat-sub">Das 6h às 23h todos os dias</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon orange">👨‍🏫</div>
+      <div class="stat-number orange">6</div>
+      <div class="stat-label">Professores</div>
+      <div class="stat-sub">Certificados e especializados</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP SECTION -->
+<section id="app" style="padding:2rem">
+  <div class="section-inner">
+    <!-- TAB NAV -->
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('quadras')">🏟️ Quadras</button>
+      <button class="tab-btn" onclick="switchTab('reservas')">📅 Reservas</button>
+      <button class="tab-btn" onclick="switchTab('torneios')">🏆 Torneios</button>
+      <button class="tab-btn" onclick="switchTab('treinos')">🎓 Treinos & Aulas</button>
+      <button class="tab-btn" onclick="switchTab('ranking')">📊 Ranking</button>
+      <button class="tab-btn" onclick="switchTab('dashboard')">⚙️ Dashboard</button>
+    </div>
+
+    <!-- QUADRAS TAB -->
+    <div class="tab-content active" id="tab-quadras">
+      <div class="section-header">
+        <span class="section-tag">Gestão de Quadras</span>
+        <h2 class="section-title">Nossas <span>Quadras</span></h2>
+        <div class="sep"></div>
+      </div>
+      <div class="courts-toolbar">
+        <select class="filter-select" onchange="filterCourts(this)">
+          <option value="all">Todas as Modalidades</option>
+          <option value="Beach Tennis">Beach Tennis</option>
+          <option value="Vôlei de Areia">Vôlei de Areia</option>
+          <option value="Futevôlei">Futevôlei</option>
+        </select>
+        <select class="filter-select" onchange="filterByStatus(this)">
+          <option value="all">Todos os Status</option>
+          <option value="disponivel">Disponível</option>
+          <option value="reservada">Reservada</option>
+          <option value="andamento">Em Andamento</option>
+          <option value="manutencao">Manutenção</option>
+        </select>
+        <input type="date" style="padding:10px 16px;border-radius:8px;background:var(--surface);border:1px solid rgba(255,255,255,0.08);color:var(--text);font-family:'DM Sans';font-size:14px;outline:none" />
+      </div>
+      <div class="courts-grid" id="courts-grid">
+        <!-- Dynamically generated -->
+      </div>
+    </div>
+
+    <!-- RESERVAS TAB -->
+    <div class="tab-content" id="tab-reservas">
+      <div class="section-header">
+        <span class="section-tag">Sistema de Reservas</span>
+        <h2 class="section-title">Fazer <span>Reserva</span></h2>
+        <div class="sep"></div>
+      </div>
+      <div class="booking-container">
+        <div class="booking-form">
+          <div class="form-title">Detalhes da Reserva</div>
+          <div class="form-sub">Preencha os dados para reservar sua quadra</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Nome Completo</label>
+              <input type="text" id="book-name" placeholder="Seu nome" />
+            </div>
+            <div class="form-group">
+              <label>Telefone / WhatsApp</label>
+              <input type="tel" id="book-phone" placeholder="(43) 99999-9999" />
+            </div>
+            <div class="form-group">
+              <label>Quadra</label>
+              <select id="book-court">
+                <option>Quadra Ouro 1 — Beach Tennis</option>
+                <option>Quadra Ouro 2 — Beach Tennis</option>
+                <option>Quadra Prata 1 — Vôlei de Areia</option>
+                <option>Quadra Prata 2 — Vôlei de Areia</option>
+                <option>Quadra Bronze 1 — Futevôlei</option>
+                <option>Quadra VIP — Beach Tennis</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Modalidade</label>
+              <select id="book-modality">
+                <option>Beach Tennis</option>
+                <option>Vôlei de Areia</option>
+                <option>Futevôlei</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Data</label>
+              <input type="date" id="book-date" />
+            </div>
+            <div class="form-group">
+              <label>Duração</label>
+              <select id="book-duration">
+                <option>1 hora — R$ 80</option>
+                <option>1h30 — R$ 110</option>
+                <option>2 horas — R$ 140</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Nº de Jogadores</label>
+              <select id="book-players">
+                <option>2 jogadores</option>
+                <option>4 jogadores</option>
+                <option>6 jogadores</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Observações</label>
+              <input type="text" placeholder="Ex: preciso de raquetes" />
+            </div>
+          </div>
+          <div style="margin-top:1.5rem">
+            <label style="display:block;margin-bottom:.75rem">Escolha o Horário</label>
+            <div class="time-grid" id="time-slots">
+              <div class="time-slot occupied">06:00</div>
+              <div class="time-slot">07:00</div>
+              <div class="time-slot selected" onclick="selectTime(this)">08:00</div>
+              <div class="time-slot" onclick="selectTime(this)">09:00</div>
+              <div class="time-slot occupied">10:00</div>
+              <div class="time-slot occupied">11:00</div>
+              <div class="time-slot" onclick="selectTime(this)">12:00</div>
+              <div class="time-slot" onclick="selectTime(this)">13:00</div>
+              <div class="time-slot occupied">14:00</div>
+              <div class="time-slot" onclick="selectTime(this)">15:00</div>
+              <div class="time-slot" onclick="selectTime(this)">16:00</div>
+              <div class="time-slot occupied">17:00</div>
+              <div class="time-slot" onclick="selectTime(this)">18:00</div>
+              <div class="time-slot" onclick="selectTime(this)">19:00</div>
+              <div class="time-slot occupied">20:00</div>
+              <div class="time-slot" onclick="selectTime(this)">21:00</div>
+            </div>
+            <div style="margin-top:.75rem;display:flex;gap:1.5rem;font-size:12px;color:var(--text3)">
+              <span>🟡 Selecionado</span><span style="color:var(--red)">🔴 Ocupado</span><span>⬜ Disponível</span>
+            </div>
+          </div>
+          <button class="btn-primary" style="width:100%;margin-top:2rem;justify-content:center;font-size:16px" onclick="confirmBooking()">✅ Confirmar Reserva</button>
+        </div>
+        <div class="booking-summary">
+          <div class="summary-header">📋 Resumo da Reserva</div>
+          <div class="summary-row"><span class="summary-label">Quadra</span><span class="summary-value">Quadra Ouro 1</span></div>
+          <div class="summary-row"><span class="summary-label">Modalidade</span><span class="summary-value">Beach Tennis</span></div>
+          <div class="summary-row"><span class="summary-label">Data</span><span class="summary-value" id="sum-date">—</span></div>
+          <div class="summary-row"><span class="summary-label">Horário</span><span class="summary-value">08:00 – 09:00</span></div>
+          <div class="summary-row"><span class="summary-label">Duração</span><span class="summary-value">1 hora</span></div>
+          <div class="summary-row"><span class="summary-label">Jogadores</span><span class="summary-value">2</span></div>
+          <div class="summary-total">
+            <span class="summary-total-label">Total</span>
+            <span class="summary-total-value">R$ 80</span>
+          </div>
+          <div style="background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.2);border-radius:10px;padding:1rem;font-size:13px;color:var(--text3);line-height:1.6;margin-bottom:1rem">
+            🌟 <strong style="color:var(--text)">Pagamento no local</strong> — Aceitamos Pix, cartões e dinheiro. Cancele com até 2h de antecedência.
+          </div>
+          <button class="whatsapp-btn" onclick="sendWhatsApp()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Confirmar via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TORNEIOS TAB -->
+    <div class="tab-content" id="tab-torneios">
+      <div class="section-header">
+        <span class="section-tag">Competições & Torneios</span>
+        <h2 class="section-title">Arena de <span>Campeões</span></h2>
+        <div class="sep"></div>
+      </div>
+      <div class="tournaments-grid">
+        <div class="tournament-card">
+          <div class="tournament-banner t-banner-1">
+            <span class="t-banner-icon">🎾</span>
+            <span class="t-banner-label t-status-open">● INSCRIÇÕES ABERTAS</span>
+          </div>
+          <div class="tournament-body">
+            <div class="tournament-sport">Beach Tennis</div>
+            <div class="tournament-name">ZN Open Masters 2025</div>
+            <div class="tournament-meta">
+              <div class="t-meta-item"><div class="t-meta-label">Data</div><div class="t-meta-value">14–15 Jun</div></div>
+              <div class="t-meta-item"><div class="t-meta-label">Premiação</div><div class="t-meta-value gold">R$ 5.000</div></div>
+              <div class="t-meta-item"><div class="t-meta-label">Equipes</div><div class="t-meta-value">16/32</div></div>
+              <div class="t-meta-item"><div class="t-meta-label">Categoria</div><div class="t-meta-value">Misto A</div></div>
+            </div>
+            <div class="bracket-mini">
+              <div class="bracket-label">Chaveamento — Semifinais</div>
+              <div class="bracket-teams">
+                <div class="bracket-pair"><div class="bracket-team winner">Silva & Costa</div><div class="bracket-team">Pereira & Lima</div></div>
+                <div class="bracket-pair"><div class="bracket-team">Souza & Mendes</div><div class="bracket-team winner">Torres & Alves</div></div>
+              </div>
+            </div>
+            <button class="btn-primary" style="width:100%;justify-content:center">🏆 Inscrever Equipe</button>
+          </div>
+        </div>
+        <div class="tournament-card">
+          <div class="tournament-banner t-banner-2">
+            <span class="t-banner-icon">🏐</span>
+            <span class="t-banner-label t-status-soon">📅 EM BREVE</span>
+          </div>
+          <div class="tournament-body">
+            <div class="tournament-sport">Vôlei de Areia</div>
+            <div class="tournament-name">Copa ZN Verão 2025</div>
+            <div class="tournament-meta">
+              <div class="t-meta-item"><div class="t-meta-label">Data</div><div class="t-meta-value">28–29 Jun</div></div>
+              <div class="t-meta-item"><div class="t-meta-label">Premiação</div><div class="t-meta-value gold">R$ 3.500</div></div>
+              <div class="t-meta-item"><div class="t-meta-label">Equipes</div><div class="t-meta-value">8/24</div></div>
+              <div class="t-meta-item"><div class="t-meta-label">Categoria</div><div class="t-meta-value">Masculino B</div></div>
+            </div>
+            <div class="bracket-mini">
+              <div class="bracket-label">Fase de Grupos — Fase 1</div>
+              <div class="bracket-teams">
+                <div class="bracket-pair"><div class="bracket-team">Grupo A</div><div class="bracket-team">Grupo B</div></div>
+                <div class="bracket-pair"><div class="bracket-team">Grupo C</div><div class="bracket-team">Grupo D</div></div>
+              </div>
+            </div>
+            <button class="btn-secondary" style="width:100%;justify-content:center;border:1px solid rgba(255,255,255,0.1)">🔔 Notificar quando abrir</button>
+          </div>
+        </div>
+        <div class="tournament-card">
+          <div class="tournament-banner t-banner-3">
+            <span class="t-banner-icon">⚽</span>
+            <span class="t-banner-label t-status-ended">✓ ENCERRADO</span>
+          </div>
+          <div class="tournament-body">
+            <div class="tournament-sport">Futevôlei</div>
+            <div class="tournament-name">1º Futevôlei ZN Classic</div>
+            <div class="tournament-meta">
+              <div class="t-meta-item"><div class="t-meta-label">Data</div><div class="t-meta-value">18–19 Mai</div></div>
+              <div class="t-meta-item"><div class="t-meta-label">Premiação</div><div class="t-meta-value gold">R$ 2.000</div></div>
+              <div class="t-meta-item"><div class="t-meta-label">Equipes</div><div class="t-meta-value">16/16</div></div>
+              <div class="t-meta-item"><div class="t-meta-label">🏆 Campeão</div><div class="t-meta-value" style="color:var(--gold)">Bros FC</div></div>
+            </div>
+            <div class="bracket-mini">
+              <div class="bracket-label">Final — Resultado</div>
+              <div class="bracket-teams">
+                <div class="bracket-pair"><div class="bracket-team winner">Bros FC 🏆</div><div class="bracket-team">Areia Quente</div></div>
+              </div>
+            </div>
+            <button class="btn-sm outline" style="width:100%">📊 Ver resultados completos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TREINOS TAB -->
+    <div class="tab-content" id="tab-treinos">
+      <div class="section-header">
+        <span class="section-tag">Treinos & Aulas</span>
+        <h2 class="section-title">Evolua com os <span>Melhores</span></h2>
+        <div class="sep"></div>
+      </div>
+      <div class="professors-grid">
+        <div class="professor-card">
+          <div class="professor-avatar"><div class="avatar-circle">RC</div></div>
+          <div class="professor-body">
+            <div class="professor-name">Rafael Costa</div>
+            <div class="professor-role">Head Coach · Beach Tennis</div>
+            <div class="professor-desc">Ex-atleta profissional com 12 anos de experiência. Especialista em técnica e táticas avançadas para todos os níveis.</div>
+            <div class="professor-skills"><span class="skill-pill">Beach Tennis</span><span class="skill-pill">Técnica</span><span class="skill-pill">Competição</span></div>
+          </div>
+        </div>
+        <div class="professor-card">
+          <div class="professor-avatar"><div class="avatar-circle" style="background:var(--blue)">AM</div></div>
+          <div class="professor-body">
+            <div class="professor-name">Ana Martins</div>
+            <div class="professor-role">Professora · Vôlei de Areia</div>
+            <div class="professor-desc">Campeã paranaense em 2019 e 2021. Apaixonada por ensinar o esporte para iniciantes e intermediários.</div>
+            <div class="professor-skills"><span class="skill-pill">Vôlei</span><span class="skill-pill">Iniciantes</span><span class="skill-pill">Feminino</span></div>
+          </div>
+        </div>
+        <div class="professor-card">
+          <div class="professor-avatar"><div class="avatar-circle" style="background:var(--green)">LP</div></div>
+          <div class="professor-body">
+            <div class="professor-name">Lucas Pereira</div>
+            <div class="professor-role">Treinador · Futevôlei</div>
+            <div class="professor-desc">Futevôlei e beach tennis no currículo. Foco em condicionamento físico e técnica de domínio com os pés.</div>
+            <div class="professor-skills"><span class="skill-pill">Futevôlei</span><span class="skill-pill">Físico</span><span class="skill-pill">Domínio</span></div>
+          </div>
+        </div>
+      </div>
+      <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:1.5rem">Aulas Disponíveis</h3>
+      <div class="classes-grid">
+        <div class="class-card">
+          <div class="class-header">
+            <span class="class-level level-iniciante">Iniciante</span>
+            <span class="class-sport">🎾</span>
+          </div>
+          <div class="class-name">Beach Tennis Básico</div>
+          <div class="class-professor">👤 Rafael Costa</div>
+          <div class="class-meta">
+            <span class="class-meta-item">⏰ Seg, Qua, Sex</span>
+            <span class="class-meta-item">🕐 07:00 – 08:00</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:12px;color:var(--text3);margin-bottom:.5rem">Vagas: <strong style="color:var(--text)">3 de 8</strong></div>
+          <div class="vagas-bar"><div class="vagas-fill" style="width:37%"></div></div>
+          <button class="btn-primary" style="width:100%;margin-top:1rem;justify-content:center;font-size:13px;padding:10px">Inscrever-se</button>
+        </div>
+        <div class="class-card">
+          <div class="class-header">
+            <span class="class-level level-intermediario">Intermediário</span>
+            <span class="class-sport">🏐</span>
+          </div>
+          <div class="class-name">Vôlei de Areia Avançado</div>
+          <div class="class-professor">👤 Ana Martins</div>
+          <div class="class-meta">
+            <span class="class-meta-item">⏰ Ter, Qui</span>
+            <span class="class-meta-item">🕑 18:00 – 19:30</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:12px;color:var(--text3);margin-bottom:.5rem">Vagas: <strong style="color:var(--text)">1 de 6</strong></div>
+          <div class="vagas-bar"><div class="vagas-fill low" style="width:83%"></div></div>
+          <button class="btn-primary" style="width:100%;margin-top:1rem;justify-content:center;font-size:13px;padding:10px">Inscrever-se</button>
+        </div>
+        <div class="class-card">
+          <div class="class-header">
+            <span class="class-level level-avancado">Avançado</span>
+            <span class="class-sport">⚽</span>
+          </div>
+          <div class="class-name">Futevôlei Pro</div>
+          <div class="class-professor">👤 Lucas Pereira</div>
+          <div class="class-meta">
+            <span class="class-meta-item">⏰ Sáb, Dom</span>
+            <span class="class-meta-item">🕘 09:00 – 11:00</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:12px;color:var(--text3);margin-bottom:.5rem">Vagas: <strong style="color:var(--text)">4 de 10</strong></div>
+          <div class="vagas-bar"><div class="vagas-fill" style="width:60%"></div></div>
+          <button class="btn-primary" style="width:100%;margin-top:1rem;justify-content:center;font-size:13px;padding:10px">Inscrever-se</button>
+        </div>
+        <div class="class-card">
+          <div class="class-header">
+            <span class="class-level level-iniciante">Iniciante</span>
+            <span class="class-sport">🎾</span>
+          </div>
+          <div class="class-name">Beach Tennis Feminino</div>
+          <div class="class-professor">👤 Ana Martins</div>
+          <div class="class-meta">
+            <span class="class-meta-item">⏰ Seg, Qua</span>
+            <span class="class-meta-item">🕕 17:00 – 18:00</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:12px;color:var(--text3);margin-bottom:.5rem">Vagas: <strong style="color:var(--text)">5 de 8</strong></div>
+          <div class="vagas-bar"><div class="vagas-fill" style="width:37%"></div></div>
+          <button class="btn-primary" style="width:100%;margin-top:1rem;justify-content:center;font-size:13px;padding:10px">Inscrever-se</button>
+        </div>
+        <div class="class-card">
+          <div class="class-header">
+            <span class="class-level level-intermediario">Intermediário</span>
+            <span class="class-sport">🎾</span>
+          </div>
+          <div class="class-name">Técnica & Tática BT</div>
+          <div class="class-professor">👤 Rafael Costa</div>
+          <div class="class-meta">
+            <span class="class-meta-item">⏰ Sex</span>
+            <span class="class-meta-item">🕕 19:00 – 21:00</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:12px;color:var(--text3);margin-bottom:.5rem">Vagas: <strong style="color:var(--text)">2 de 4</strong></div>
+          <div class="vagas-bar"><div class="vagas-fill low" style="width:50%"></div></div>
+          <button class="btn-primary" style="width:100%;margin-top:1rem;justify-content:center;font-size:13px;padding:10px">Inscrever-se</button>
+        </div>
+        <div class="class-card">
+          <div class="class-header">
+            <span class="class-level level-avancado">Avançado</span>
+            <span class="class-sport">🏐</span>
+          </div>
+          <div class="class-name">Vôlei de Competição</div>
+          <div class="class-professor">👤 Ana Martins</div>
+          <div class="class-meta">
+            <span class="class-meta-item">⏰ Sáb</span>
+            <span class="class-meta-item">🕐 07:00 – 09:00</span>
+          </div>
+          <div style="margin-top:.75rem;font-size:12px;color:var(--text3);margin-bottom:.5rem">Vagas: <strong style="color:var(--text)">6 de 6</strong></div>
+          <div class="vagas-bar"><div class="vagas-fill low" style="width:100%"></div></div>
+          <button class="btn-sm outline" style="width:100%;margin-top:1rem">Lista de Espera</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RANKING TAB -->
+    <div class="tab-content" id="tab-ranking">
+      <div class="section-header">
+        <span class="section-tag">Ranking & Campeões</span>
+        <h2 class="section-title">Top <span>Jogadores</span></h2>
+        <div class="sep"></div>
+      </div>
+      <div class="rankings">
+        <div class="panel-header">
+          <div class="panel-title">Ranking Geral — Beach Tennis 2025</div>
+          <select class="filter-select" style="font-size:13px;padding:8px 14px">
+            <option>Beach Tennis</option>
+            <option>Vôlei de Areia</option>
+            <option>Futevôlei</option>
+          </select>
+        </div>
+        <div class="rank-list">
+          <div class="rank-item"><span class="rank-pos p1">1</span><div class="rank-avatar">RS</div><div class="rank-info"><div class="rank-name">Rafael Silva & Pedro Costa</div><div class="rank-sport">Beach Tennis · 8 torneios</div></div><div class="rank-pts">1.840 pts</div><div class="rank-bar-wrap"><div class="rank-bar-bg"><div class="rank-bar-fill" style="width:100%"></div></div></div></div>
+          <div class="rank-item"><span class="rank-pos p2">2</span><div class="rank-avatar" style="background:#C0C0C0;color:#333">AM</div><div class="rank-info"><div class="rank-name">Ana Martins & Julia Souza</div><div class="rank-sport">Beach Tennis · 7 torneios</div></div><div class="rank-pts">1.620 pts</div><div class="rank-bar-wrap"><div class="rank-bar-bg"><div class="rank-bar-fill" style="width:88%"></div></div></div></div>
+          <div class="rank-item"><span class="rank-pos p3">3</span><div class="rank-avatar" style="background:#CD7F32;color:#fff">LT</div><div class="rank-info"><div class="rank-name">Lucas Torres & Bruno Alves</div><div class="rank-sport">Beach Tennis · 6 torneios</div></div><div class="rank-pts">1.440 pts</div><div class="rank-bar-wrap"><div class="rank-bar-bg"><div class="rank-bar-fill" style="width:78%"></div></div></div></div>
+          <div class="rank-item"><span class="rank-pos other">4</span><div class="rank-avatar" style="background:var(--surface)">FM</div><div class="rank-info"><div class="rank-name">Felipe Mendes & João Lima</div><div class="rank-sport">Beach Tennis · 5 torneios</div></div><div class="rank-pts">1.200 pts</div><div class="rank-bar-wrap"><div class="rank-bar-bg"><div class="rank-bar-fill" style="width:65%"></div></div></div></div>
+          <div class="rank-item"><span class="rank-pos other">5</span><div class="rank-avatar" style="background:var(--surface)">CP</div><div class="rank-info"><div class="rank-name">Carlos Pereira & Diego Santos</div><div class="rank-sport">Beach Tennis · 5 torneios</div></div><div class="rank-pts">1.080 pts</div><div class="rank-bar-wrap"><div class="rank-bar-bg"><div class="rank-bar-fill" style="width:58%"></div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD TAB -->
+    <div class="tab-content" id="tab-dashboard">
+      <div class="admin-bar" style="margin:-2rem -2rem 2rem;padding:.75rem 2rem;border-radius:0">
+        <span class="admin-badge-dot"></span>
+        <span class="admin-label">Painel Administrativo</span>
+        <span style="font-size:12px;color:var(--text3);margin-left:auto">Última atualização: hoje às 09:34</span>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card"><div class="dash-icon gold">💰</div><div class="dash-value gold">R$4.2k</div><div class="dash-label">Faturamento Hoje</div><div class="dash-trend">▲ +18% vs ontem</div></div>
+        <div class="dash-card"><div class="dash-icon green">📅</div><div class="dash-value green">42</div><div class="dash-label">Reservas Hoje</div><div class="dash-trend">▲ +7 vs ontem</div></div>
+        <div class="dash-card"><div class="dash-icon blue">🏟️</div><div class="dash-value blue">87%</div><div class="dash-label">Taxa de Ocupação</div><div class="dash-trend">▲ +5% este mês</div></div>
+        <div class="dash-card"><div class="dash-icon red">⏳</div><div class="dash-value red">3</div><div class="dash-label">Quadras em Manutenção</div><div class="dash-trend down">▼ resolução prevista 16h</div></div>
+      </div>
+      <div class="dash-2col">
+        <div class="dash-panel">
+          <div class="panel-header"><div class="panel-title">Ocupação por Horário</div><span class="panel-action">Ver detalhes →</span></div>
+          <div class="chart-bars" id="chart-bars"></div>
+          <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--text3);padding:0 4px">
+            <span>06h</span><span>08h</span><span>10h</span><span>12h</span><span>14h</span><span>16h</span><span>18h</span><span>20h</span><span>22h</span>
+          </div>
+        </div>
+        <div class="dash-panel">
+          <div class="panel-header"><div class="panel-title">Ações Rápidas</div></div>
+          <div class="quick-actions">
+            <button class="qa-btn" onclick="goTab('reservas')"><span class="qa-btn-icon">➕</span><span class="qa-btn-label">Nova Reserva</span><span class="qa-btn-sub">Criar manualmente</span></button>
+            <button class="qa-btn"><span class="qa-btn-icon">🔒</span><span class="qa-btn-label">Bloquear Quadra</span><span class="qa-btn-sub">Manutenção ou evento</span></button>
+            <button class="qa-btn" onclick="goTab('torneios')"><span class="qa-btn-icon">🏆</span><span class="qa-btn-label">Novo Torneio</span><span class="qa-btn-sub">Cadastrar competição</span></button>
+            <button class="qa-btn"><span class="qa-btn-icon">📊</span><span class="qa-btn-label">Relatório</span><span class="qa-btn-sub">Exportar dados</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="dash-panel" style="margin-bottom:2rem">
+        <div class="panel-header"><div class="panel-title">Últimas Reservas</div><span class="panel-action">Ver todas →</span></div>
+        <table class="recent-table">
+          <thead><tr><th>Cliente</th><th>Quadra</th><th>Modalidade</th><th>Horário</th><th>Status</th><th>Valor</th></tr></thead>
+          <tbody>
+            <tr><td><span class="client-dot">RS</span>Rafael Silva</td><td>Ouro 1</td><td>Beach Tennis</td><td>Hoje 09:00</td><td><span style="background:rgba(46,204,113,0.15);color:var(--green);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700">Confirmada</span></td><td style="color:var(--gold);font-weight:600">R$80</td></tr>
+            <tr><td><span class="client-dot">AM</span>Ana Martins</td><td>Prata 2</td><td>Vôlei de Areia</td><td>Hoje 10:00</td><td><span style="background:rgba(52,152,219,0.15);color:var(--blue);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700">Em Andamento</span></td><td style="color:var(--gold);font-weight:600">R$80</td></tr>
+            <tr><td><span class="client-dot">LP</span>Lucas Pereira</td><td>VIP</td><td>Beach Tennis</td><td>Hoje 11:00</td><td><span style="background:rgba(243,156,18,0.15);color:var(--orange);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700">Aguardando</span></td><td style="color:var(--gold);font-weight:600">R$120</td></tr>
+            <tr><td><span class="client-dot">MS</span>Marcos Santos</td><td>Bronze 1</td><td>Futevôlei</td><td>Hoje 14:00</td><td><span style="background:rgba(46,204,113,0.15);color:var(--green);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700">Confirmada</span></td><td style="color:var(--gold);font-weight:600">R$80</td></tr>
+            <tr><td><span class="client-dot">JP</span>Julia Prado</td><td>Ouro 2</td><td>Beach Tennis</td><td>Hoje 16:00</td><td><span style="background:rgba(46,204,113,0.15);color:var(--green);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700">Confirmada</span></td><td style="color:var(--gold);font-weight:600">R$80</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-header center">
+      <span class="section-tag">Por que a ZN Beach?</span>
+      <h2 class="section-title">Nossos <span>Diferenciais</span></h2>
+      <div class="sep center"></div>
+      <p class="section-subtitle">Mais do que uma arena, uma experiência completa no coração da Zona Norte de Londrina.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card"><span class="diff-icon">🏟️</span><div class="diff-title">Quadras Premium</div><div class="diff-text">Areia selecionada, iluminação LED de alta potência e redes profissionais homologadas para competições oficiais.</div></div>
+      <div class="diff-card"><span class="diff-icon">📱</span><div class="diff-title">Reserva 100% Online</div><div class="diff-text">Faça sua reserva pelo site ou WhatsApp em segundos. Confirmação instantânea e pagamento facilitado via Pix.</div></div>
+      <div class="diff-card"><span class="diff-icon">🏆</span><div class="diff-title">Torneios Frequentes</div><div class="diff-text">Competições mensais para todos os níveis com premiações em dinheiro e troféus. A sua chance de brilhar!</div></div>
+      <div class="diff-card"><span class="diff-icon">👨‍🏫</span><div class="diff-title">Professores Certificados</div><div class="diff-text">Nossa equipe de treinadores tem experiência profissional e certificações nacionais em beach sports.</div></div>
+      <div class="diff-card"><span class="diff-icon">🌴</span><div class="diff-title">Ambiente Tropical</div><div class="diff-text">Estrutura completa com área de descanso, vestiários modernos, lanchonete e espaço kids para a família.</div></div>
+      <div class="diff-card"><span class="diff-icon">🔒</span><div class="diff-title">Segurança & Estacionamento</div><div class="diff-text">Câmeras 24h, segurança no local e estacionamento gratuito para todos os clientes da arena.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Galeria</span>
+      <h2 class="section-title">Nossa <span>Arena</span></h2>
+      <div class="sep"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item large gallery-g1"><div class="gallery-inner">🏟️</div><div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div></div>
+      <div class="gallery-item medium gallery-g2"><div class="gallery-inner">🎾</div><div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div></div>
+      <div class="gallery-item small gallery-g3"><div class="gallery-inner">🏐</div><div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div></div>
+      <div class="gallery-item medium gallery-g4"><div class="gallery-inner">🏆</div><div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div></div>
+      <div class="gallery-item small gallery-g5"><div class="gallery-inner">⚽</div><div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div></div>
+      <div class="gallery-item medium gallery-g6"><div class="gallery-inner">🌴</div><div class="gallery-overlay"><span class="gallery-overlay-icon">🔍</span></div></div>
+    </div>
+    <p style="text-align:center;color:var(--text3);font-size:13px;margin-top:1.5rem">📸 Fotos reais da arena serão inseridas neste espaço</p>
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section id="localizacao" class="map-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Localização</span>
+      <h2 class="section-title">Onde <span>Estamos</span></h2>
+      <div class="sep"></div>
+    </div>
+    <div class="map-container">
+      <div class="map-frame">
+        <div class="map-placeholder">
+          <span class="map-placeholder-icon">📍</span>
+          <p style="color:var(--text);font-weight:600;font-size:16px">ZN Beach Arena</p>
+          <p>Zona Norte de Londrina — PR</p>
+          <small>Google Maps será integrado aqui</small>
+          <br><br>
+          <button class="btn-primary" style="font-size:13px;padding:12px 24px;margin:0 auto" onclick="window.open('https://maps.google.com/?q=Zona+Norte+Londrina+PR','_blank')">
+            🗺️ Abrir no Google Maps
+          </button>
+        </div>
+      </div>
+      <div class="map-info">
+        <div class="map-info-card">
+          <div class="map-info-icon">📍</div>
+          <div><div class="map-info-title">Endereço</div><div class="map-info-text">Rua das Palmeiras, 1200 — Zona Norte, Londrina - PR, CEP 86080-000</div></div>
+        </div>
+        <div class="map-info-card">
+          <div class="map-info-icon">⏰</div>
+          <div><div class="map-info-title">Horário de Funcionamento</div><div class="map-info-text">Segunda a Sexta: 06h às 23h<br>Sábados e Domingos: 07h às 22h<br>Feriados: 08h às 20h</div></div>
+        </div>
+        <div class="map-info-card">
+          <div class="map-info-icon">📞</div>
+          <div><div class="map-info-title">Contato</div><div class="map-info-text">(43) 99999-9999 — WhatsApp<br>contato@znbeach.com.br</div></div>
+        </div>
+        <div class="map-info-card">
+          <div class="map-info-icon">🚗</div>
+          <div><div class="map-info-title">Como Chegar</div><div class="map-info-text">Estacionamento gratuito no local. Fácil acesso pela Av. do Norte e BR-369.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">ZN <span>BEACH</span></div>
+        <div class="footer-brand-desc">A arena de beach sports mais completa da Zona Norte de Londrina. Quadras premium, torneios emocionantes e treinos com os melhores profissionais.</div>
+        <div class="social-links">
+          <a class="social-link" href="#" title="Instagram">📸</a>
+          <a class="social-link" href="#" title="Facebook">📘</a>
+          <a class="social-link" href="#" title="WhatsApp">💬</a>
+          <a class="social-link" href="#" title="YouTube">▶️</a>
+          <a class="social-link" href="#" title="TikTok">🎵</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Arena</div>
+        <div class="footer-links">
+          <a href="#" onclick="goTab('quadras')">Quadras</a>
+          <a href="#" onclick="goTab('torneios')">Torneios</a>
+          <a href="#" onclick="goTab('treinos')">Treinos & Aulas</a>
+          <a href="#" onclick="goTab('ranking')">Ranking</a>
+          <a href="#galeria">Galeria</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Reservas</div>
+        <div class="footer-links">
+          <a href="#" onclick="goTab('reservas')">Fazer Reserva</a>
+          <a href="#">Minha Reserva</a>
+          <a href="#">Cancelamento</a>
+          <a href="#">Pacotes Mensais</a>
+          <a href="#">Empresas</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <div class="footer-links">
+          <a href="tel:+554399999999">(43) 99999-9999</a>
+          <a href="mailto:contato@znbeach.com.br">contato@znbeach.com.br</a>
+          <a href="#localizacao">Localização</a>
+          <a href="#">Trabalhe Conosco</a>
+          <a href="#">Política de Privacidade</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ZN Beach Arena · Todos os direitos reservados · Londrina - PR</p>
+      <div class="footer-bottom-links">
+        <a href="#">Termos de Uso</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// COURTS DATA
+const courts = [
+  {num:'01',name:'Quadra Ouro 1',sport:'Beach Tennis',status:'disponivel',statusLabel:'Disponível',horario:'—',cliente:'—',duracao:'—',emoji:'🎾'},
+  {num:'02',name:'Quadra Ouro 2',sport:'Beach Tennis',status:'reservada',statusLabel:'Reservada',horario:'10:00 – 11:00',cliente:'Rafael Silva',duracao:'1h',emoji:'🎾'},
+  {num:'03',name:'Quadra Prata 1',sport:'Vôlei de Areia',status:'andamento',statusLabel:'Em Andamento',horario:'09:00 – 10:00',cliente:'Ana & Cia',duracao:'1h',emoji:'🏐'},
+  {num:'04',name:'Quadra Prata 2',sport:'Vôlei de Areia',status:'disponivel',statusLabel:'Disponível',horario:'—',cliente:'—',duracao:'—',emoji:'🏐'},
+  {num:'05',name:'Quadra Bronze 1',sport:'Futevôlei',status:'manutencao',statusLabel:'Manutenção',horario:'—',cliente:'—',duracao:'Até 16h',emoji:'⚽'},
+  {num:'06',name:'Quadra Bronze 2',sport:'Futevôlei',status:'disponivel',statusLabel:'Disponível',horario:'—',cliente:'—',duracao:'—',emoji:'⚽'},
+  {num:'07',name:'Quadra VIP',sport:'Beach Tennis',status:'reservada',statusLabel:'Reservada',horario:'11:00 – 13:00',cliente:'Lucas Pereira',duracao:'2h',emoji:'👑'},
+  {num:'08',name:'Quadra Kids',sport:'Beach Tennis',status:'disponivel',statusLabel:'Disponível',horario:'—',cliente:'—',duracao:'—',emoji:'🌟'},
+];
+
+function renderCourts(data){
+  const grid = document.getElementById('courts-grid');
+  grid.innerHTML = data.map(c => `
+    <div class="court-card" data-sport="${c.sport}" data-status="${c.status}">
+      <div class="court-card-header">
+        <span class="court-num">${c.num}</span>
+        <div class="court-sport">${c.emoji} ${c.sport}</div>
+        <div class="court-name">${c.name}</div>
+        <span class="court-status-badge status-${c.status}">${statusDot(c.status)} ${c.statusLabel}</span>
+      </div>
+      <div class="court-card-body">
+        <div class="court-info-row"><span class="court-info-label">Horário</span><span class="court-info-value">${c.horario}</span></div>
+        <div class="court-info-row"><span class="court-info-label">Cliente</span><span class="court-info-value">${c.cliente}</span></div>
+        <div class="court-info-row"><span class="court-info-label">Duração</span><span class="court-info-value">${c.duracao}</span></div>
+      </div>
+      <div class="court-card-footer" style="display:flex;gap:.75rem">
+        ${c.status === 'disponivel' ? `<button class="btn-sm gold" onclick="goToReserva('${c.name}')">Reservar</button>` : ''}
+        <button class="btn-sm outline">Ver agenda</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function statusDot(s){return s==='disponivel'?'●':s==='reservada'?'●':s==='andamento'?'●':'●'}
+
+renderCourts(courts);
+
+function filterCourts(sel){
+  const v = sel.value;
+  const filtered = v==='all'?courts:courts.filter(c=>c.sport===v);
+  renderCourts(filtered);
+}
+function filterByStatus(sel){
+  const v = sel.value;
+  const filtered = v==='all'?courts:courts.filter(c=>c.status===v);
+  renderCourts(filtered);
+}
+function goToReserva(name){
+  switchTab('reservas');
+  const el = document.getElementById('book-court');
+  for(let i=0;i<el.options.length;i++){if(el.options[i].text.includes(name.split(' ').slice(0,2).join(' '))){el.selectedIndex=i;break;}}
+}
+
+// TABS
+function switchTab(name){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  const btns = document.querySelectorAll('.tab-btn');
+  const labels = {quadras:0,reservas:1,torneios:2,treinos:3,ranking:4,dashboard:5};
+  if(btns[labels[name]]) btns[labels[name]].classList.add('active');
+  document.getElementById('app').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function goTab(name){switchTab(name);return false}
+
+// TIME SLOTS
+function selectTime(el){
+  if(el.classList.contains('occupied')) return;
+  document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// BOOKING CONFIRM
+function confirmBooking(){
+  const name = document.getElementById('book-name').value;
+  const date = document.getElementById('book-date').value;
+  if(!name.trim()){alert('Por favor, insira seu nome.');return;}
+  showToast('✅ Reserva confirmada! Aguarde o contato via WhatsApp.');
+  if(date) document.getElementById('sum-date').textContent = new Date(date+'T12:00').toLocaleDateString('pt-BR');
+}
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3500);
+}
+function sendWhatsApp(){
+  const name = document.getElementById('book-name').value || 'Cliente';
+  const phone = '5543999999999';
+  const msg = encodeURIComponent(`Olá, ZN Beach! Gostaria de confirmar minha reserva.\n\nNome: ${name}\nQuadra: Quadra Ouro 1\nHorário: 08:00\nModalidade: Beach Tennis`);
+  window.open(`https://wa.me/${phone}?text=${msg}`,'_blank');
+}
+
+// CHART BARS
+const chartData = [30,45,60,50,70,85,100,95,80,90,100,87,75,68,92,95,100,88,65,42,30,20,10,5];
+const hours = ['06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23'];
+function renderChart(){
+  const container = document.getElementById('chart-bars');
+  if(!container) return;
+  container.innerHTML = hours.map((h,i)=>{
+    const val = chartData[i]||20;
+    const isActive = val>80;
+    return `<div class="chart-bar-wrap">
+      <div class="chart-bar ${isActive?'active':''}" style="height:${val}%;min-height:4px"></div>
+    </div>`;
+  }).join('');
+}
+renderChart();
+
+// DATE DEFAULT
+const today = new Date().toISOString().split('T')[0];
+const dateInputs = document.querySelectorAll('input[type="date"]');
+dateInputs.forEach(d=>{d.value=today;d.min=today});
+
+// SCROLL ANIMATION
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.style.animationPlayState='running'});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>{
+  el.style.animationPlayState='paused';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
